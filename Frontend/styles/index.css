@@ -1,0 +1,35 @@
+
+#category{
+    display: flex;
+    justify-content: space-evenly;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+#category>div{
+    width: 9%;
+    text-align: center;
+}
+
+#category>div img{
+    width: 80%;
+    margin: 0;
+    padding: 0;
+}
+
+#slider{
+    margin: 10px;
+}
+
+#slider>img{
+    width: 100%;
+}
+
+#top-offers{
+    height: 40vh;
+}
+
+#top-offers>div:nth-child(1){
+   display: flex;
+   width: 20%;
+   flex-direction: column;
+}
