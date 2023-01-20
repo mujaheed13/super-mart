@@ -25,11 +25,39 @@
 }
 
 #top-offers{
-    height: 40vh;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-#top-offers>div:nth-child(1){
-   display: flex;
-   width: 20%;
-   flex-direction: column;
+
+
+#top-offers>div{
+    width: 23%;
+    margin: 10px 0px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+
+#top-offers>div>img{
+    width: 98%;
+    margin: auto;
+}
+
+#mid-sec{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+#mid-sec img{
+    width: 100%;
+}
+
+#b-offers{
+    width: 100%;
+}
+
+#b-offers>img{
+    width: 100%;
 }

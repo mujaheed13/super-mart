@@ -1,7 +1,16 @@
 const banner_imgs = [
     "https://rukminim1.flixcart.com/fk-p-flap/3376/560/image/483fc2547747864a.jpeg?q=50",
-    "https://rukminim1.flixcart.com/fk-p-flap/1688/280/image/80d7d6f1c3d00945.jpeg?q=50"
-]
+    "https://rukminim1.flixcart.com/fk-p-flap/1688/280/image/80d7d6f1c3d00945.jpeg?q=50",
+    "https://rukminim1.flixcart.com/fk-p-flap/3376/560/image/448c152993ceefb3.jpeg?q=50"
+];
+
+const categories = document.querySelectorAll("#category p");
+categories.forEach((el)=>{
+  el.addEventListener("click", ()=>{
+    window.location.href = "products.html";
+  })
+})
+
 
 displayImg();
 
