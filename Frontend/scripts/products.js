@@ -1,7 +1,8 @@
 const api_base_url = "http://localhost:8080";
 const div = document.querySelector("#products");
 const filterByCategory = document.getElementById("filter-by-category");
-const sortByPrice = document.getElementById("sort-by-price")
+const sortByPrice = document.getElementById("sort-by-price");
+const sortByRatings = document.getElementById("sort-by-ratings");
 // import { navbar } from "./navbar.js";
 // const nav = document.querySelector("nav");
 // nav.innerHTML = navbar;
@@ -27,6 +28,14 @@ function displayProducts(data){
     data.forEach((el)=>{
         
     const div1 = document.createElement("div");
+        
+
+    const div2 = document.createElement("div");
+
+    div2.addEventListener("click", ()=>{
+        localStorage.setItem("abc", JSON.stringify(el));
+        window.location.href = "individual-product-page.html"
+    });
 
     const image = document.createElement("img");
     image.setAttribute("src", el.image);
@@ -37,18 +46,22 @@ function displayProducts(data){
     const details = document.createElement("p");
     details.innerText = el.description;
 
+    const div3 = document.createElement("div");
+
+    div3.addEventListener("click", ()=>{
+        localStorage.setItem("abc", JSON.stringify(el));
+        window.location.href = "individual-product-page.html"
+    });
+
     const price = document.createElement("h3");
     price.innerText = "₹"+el.price;
 
     const span = document.createElement("span");
-    span.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+    span.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 0 24 24" width="15"><path d="M0 0h24v24H0z" fill="none"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+    ${el.rating}`;
 
-    const rating = document.createElement("p");
-    rating.innerText = el.rating;
+
+    const div4 = document.createElement("div");
 
     const bagbtn = document.createElement("button");
     bagbtn.innerText = "ADD TO BAG";
@@ -56,8 +69,10 @@ function displayProducts(data){
        
     });
 
-    span.append(rating);
-    div1.append(image, name, details, price, span, bagbtn);
+    div2.append(image)
+    div3.append(name,span, details);
+    div4.append(price, bagbtn);
+    div1.append(div2, div3, div4);
     div.append(div1);
 
     });
@@ -110,5 +125,33 @@ sortByPrice.addEventListener("change", async()=>{
         const res = await fetch(`${api_base_url}/products/?sort=asc`);
         const data = await res.json();
         displayProducts(data);
+    }
+})
+
+sortByRatings.addEventListener("change", async()=>{
+    const rati = sortByRatings.value;
+    if(rati!=''){
+        try {
+            const res = await fetch(`${api_base_url}/products`);
+            const data = await res.json();
+            if(rati=="4a"){
+             const data1 = data.filter((el)=>{
+               return el.rating>=4
+            });
+            console.log(data1)
+            } else if(rati=="5"){
+                const data1 = data.filter((el)=>{
+                    return el.rating==5
+                 });
+                 console.log(data1)
+            } else {
+                const data1 = data.filter((el)=>{
+                    return el.rating>=3
+                 });
+                 console.log(data1)
+            }
+        } catch (error) {
+        
+        }
     }
 })

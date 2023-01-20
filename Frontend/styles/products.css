@@ -2,7 +2,7 @@
     display: flex;
     margin: auto;
     padding: 15px;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 #filters{
@@ -16,21 +16,37 @@
 #filters>span{
     border-bottom: 0.5px solid grey;
     padding: 10px;
-  }
+}
 
 
 #products{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    display: flex;
+    flex-direction: column;
     width: 70%;
 }
 
-#products>div>img{
+#products>div{
+    display: flex;
+    border-bottom: 0.5px solid grey;
     width: 100%;
+    justify-content: space-evenly;
 }
 
-#products>div>p{
+#products>div>div:nth-child(1){
+  width: 30%;
+  margin: 10px;
+}
+
+#products>div>:nth-child(2){
+  width: 50%;
+}
+
+#products>div>div>img{
+  width: 200px;
+  height: auto ;
+}
+
+#products>div>div>p{
     color: rgb(102, 102, 102);
     text-overflow:ellipsis;
     overflow:hidden;
@@ -41,7 +57,7 @@
  }
 
  
-#products>div>h2{
+#products>div>div>h2{
     font-weight: 530;
     text-overflow:ellipsis;
     overflow:hidden;
@@ -52,17 +68,19 @@
     
   }
   
-  #products>div>button{
+  #products>div>div>button{
     width: 100%;
     padding: 10px;
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
+    color: black;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
   
-  #products>div>button:hover{
+  #products>div>div>button:hover{
     box-shadow: none;
+    color: rgb(98, 205, 205);
   }
   
   #products>div>h3{
@@ -70,13 +88,12 @@
 }
 
 
-#products>span{
-  display: flex;
-  align-items: center;
-  padding: 10px 0px;
-  width: 60%;
-  justify-content: space-evenly;
-  text-align: center;
+#products span{
+  display: flex; 
+ background-color: rgb(129, 228, 228);
+ width: fit-content;
+ padding: 1%;
+ border-radius: 3px;
 }
 
 select{
