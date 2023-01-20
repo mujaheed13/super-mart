@@ -75,7 +75,7 @@ nav>div {
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     background-color: white;
-    position: absolute;
+    position: fixed;
     top: 45px;
     margin-left: 50%;
     visibility: hidden;
@@ -87,7 +87,6 @@ nav>div {
     width: 18px;
     margin: auto;
     filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(100%) contrast(80%);
-    ;
 }
 
 #profile-popup>p {
@@ -114,7 +113,7 @@ nav>div {
     background-color: white;
     top: 15vh;
     left: 25vw;
-    position: absolute;
+    position: fixed;
     border-radius: 5px;
     padding: 0;
     z-index: 3;
