@@ -34,7 +34,7 @@ form.addEventListener("submit", async (e) => {
       });
       if (res.ok) {
         swal({
-          title: "Account has been created.",
+          title: "Product has been Added.",
           text: "You can login now.",
           icon: "success",
           button: "OK",

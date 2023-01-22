@@ -1,10 +1,10 @@
-const {Router, query} = require("express");
+const {Router} = require("express");
 const { ProductModel } = require("../models/product.model.js");
 const productRouter = Router();
 
 productRouter.post("/add", async(req, res)=>{
     try {
-        const product = ProductModel(req.body);
+        const product = new ProductModel(req.body);
         await product.save();
         res.send("Product added");
     } catch (error) {
