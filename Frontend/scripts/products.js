@@ -1,4 +1,4 @@
-const api_base_url = "http://localhost:8080";
+const api_base_url = "https://rich-tunic-newt.cyclic.app";
 const div = document.querySelector("#products");
 const filterByCategory = document.getElementById("filter-by-category");
 const sortByPrice = document.getElementById("sort-by-price");
@@ -99,7 +99,7 @@ async function addToCartfun(prod){
             if (res.ok) {
               swal({
                 title: "Product has been Added.",
-                text: "You can login now.",
+                text: "",
                 icon: "success",
                 button: "OK",
               });
@@ -176,16 +176,19 @@ sortByRatings.addEventListener("change", async()=>{
                return el.rating>=4
             });
             console.log(data1)
+            displayProducts(data1)
             } else if(rati=="5"){
                 const data1 = data.filter((el)=>{
                     return el.rating==5
                  });
                  console.log(data1)
+                 displayProducts(data1)
             } else {
                 const data1 = data.filter((el)=>{
                     return el.rating>=3
                  });
                  console.log(data1)
+                 displayProducts(data1)
             }
         } catch (error) {
         

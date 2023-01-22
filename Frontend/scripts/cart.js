@@ -1,5 +1,6 @@
+
 const mtCart = document.createElement("h1");
-const base_url = "http://localhost:8080";
+const base_url = "https://rich-tunic-newt.cyclic.app";
 const token = localStorage.getItem("token");
 let cartDiv = document.querySelector("#cart1");
 
@@ -13,7 +14,15 @@ async function getProducts(){
             }
         });
         const data = await res.json();
-        displayProducts(data);
+        if(data.length==0){
+            mtCart.setAttribute("id", "mtcart")
+            mtCart.innerHTML = "Your Cart is Empty";
+            document.body.append(mtCart);
+            document.querySelector("#re").style.visibility = "hidden";
+            document.querySelector("#order-summary").style.visibility = "hidden";
+        } else {
+            displayProducts(data);
+        }
         console.log(data)
     } catch (error) {
         console.log(error);
@@ -21,7 +30,7 @@ async function getProducts(){
 }
 
 
-// if(cartData.length===0){
+// if(){
    
 //     mtCart.setAttribute("id", "mtcart")
 //     mtCart.innerHTML = "Your Bag is Empty";
@@ -32,7 +41,7 @@ async function getProducts(){
 //     mtCart.style.visibility = "hidden";
 //     document.querySelector("#re").style.visibility = "visible";
 //     document.querySelector("#order-summary").style.visibility = "visible";
-
+// }
 // let div = document.querySelector("#cart1");
 // let subtotal = document.querySelector("#subtotal");
 // let total = document.querySelector("#total");
@@ -41,7 +50,7 @@ function displayProducts(data){
 
 
     let ship = document.querySelector("#ship")
-ship.innerText = "₹50"
+    ship.innerText = "₹100"
 
     let a = data.reduce((a, b)=>{
         return a + Number(b.price) * Number(b.quantity);
@@ -49,7 +58,7 @@ ship.innerText = "₹50"
     
     subtotal.innerText = "₹" + a
 
-    total.innerText = "₹" + (a + 5);
+    total.innerText = "₹" + (a + 100);
 
     cartDiv.innerHTML = null;
 
@@ -102,7 +111,7 @@ ship.innerText = "₹50"
     let bagbtn = document.createElement("button");
     bagbtn.innerText = "Remove from Cart";
     bagbtn.addEventListener("click", ()=>{
-        removeEl(cartData, i);
+        removeFromCart(elem);
     });
 
  
@@ -117,25 +126,30 @@ ship.innerText = "₹50"
 
 
 
-function removeEl(data, i){
-    data.splice(i, 1);
-    cartData=data;
-    console.log(data);
-    localStorage.setItem("cart-products", JSON.stringify(cartData));
-    displayProducts(cartData);
-};
+async function removeFromCart(prod){
+    try {
+       const res = await fetch(`${base_url}/cartproducts/${prod._id}`, {
+            headers:{
+                Authorization: token
+            }, 
+            method: "DELETE"
+        })
+        if(res.ok){
+            swal("Product removed from the cart");
+            getProducts();
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
 
-let selectOpt = document.querySelector("#po");
 let orderBtn = document.querySelector("#order");
 orderBtn.addEventListener("click", ()=>{
-    
-    if(selectOpt.checked && cartData.length>=0){
-        alert("Congratulations! Your Order has been placed Successfully.")
-        localStorage.setItem("ordered-products", JSON.stringify(cartData));
-    } else {
-        alert("Select Payment Method");
-    }
-
+    let aaa = document.getElementById("total").innerText;
+    window.location.href = "address.html";
+        
 });
+
+// console.log(document.getElementById("total").innerText);

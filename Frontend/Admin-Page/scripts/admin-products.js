@@ -3,7 +3,7 @@ const nav = document.getElementById("navbar");
 nav.innerHTML = navBar;
 const form = document.querySelector("#main>form");
 const productsTable = document.querySelector("#products tbody");
-const base_url = "http://localhost:8080"
+const base_url = "https://rich-tunic-newt.cyclic.app"
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();

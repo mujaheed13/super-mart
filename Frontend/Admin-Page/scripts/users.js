@@ -4,7 +4,7 @@ const nav = document.getElementById("navbar");
 nav.innerHTML = navBar;
 
 const usersTable = document.querySelector("#users tbody")
-const base_url = "http://localhost:8080"
+const base_url = "https://rich-tunic-newt.cyclic.app"
 
 
 getUsers();
