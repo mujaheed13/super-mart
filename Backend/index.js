@@ -7,14 +7,19 @@ const { json } = require("express");
 const { userRouter } = require("./routes/user.route.js");
 const { connection } = require("./configs/mongoose.connection.js");
 const { productRouter } = require("./routes/products.route.js");
+const { auth } = require("./middlewares/auth.js");
+const { cartProductsRouter } = require("./routes/cart-products.route.js");
 
 //Middlewares
 app.use(cors({origin:"*"}));
 app.use(json());
 
+
 //routes
 app.use("/user", userRouter);
 app.use("/products", productRouter);
+app.use(auth);
+app.use("/cartproducts", cartProductsRouter);
 
 app.get("/", (req, res)=>{
     res.json("Super Mart");
