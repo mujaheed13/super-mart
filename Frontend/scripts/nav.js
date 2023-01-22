@@ -1,4 +1,4 @@
-const api_base_url = "http://localhost:8080";
+const api_base_url = "https://rich-tunic-newt.cyclic.app";
 const logo = document.getElementById("logo");
 const loginBtn = document.getElementById("login-btn");
 const profile_popup = document.getElementById("profile-popup");
@@ -16,20 +16,29 @@ const searchBtn = document.getElementById("search-btn");
 const div = document.querySelector("#products");
 const cartBtn = document.getElementById("cart-btn");
 const auth_token = localStorage.getItem("token");
+const userloggedin = localStorage.getItem("userloggedin?");
+
+console.log(userloggedin);
+
+// if(userloggedin){
+  function logout(){
+      const logoutBtn = document.createElement("a");
+      logoutBtn.innerHTML = `<img src="./images/power-on.png" alt=""> Log Out`;
+      logoutBtn.style.visibility = "visible"
+      profile_popup.append(logoutBtn)
+      logoutBtn.addEventListener("click", ()=>{
+        localStorage.removeItem("token")
+        swal("You are now Logged out")
+        localStorage.setItem("token", null)
+        localStorage.setItem("userloggedin?", false);
+        profile_popup.lastElementChild.style.visibility = "hidden";
+      })
+    }
+// } else {
+//    profile_popup.removeChild(profile_popup.lastElement);
+// }
 
 
-
-function logout(){
-    const logoutBtn = document.createElement("a");
-    logoutBtn.innerHTML = `<img src="./images/power-on.png" alt=""> Log Out`;
-    profile_popup.append(logoutBtn)
-    logoutBtn.addEventListener("click", ()=>{
-      localStorage.removeItem("token")
-      swal("You are now Logged out")
-      profile_popup.removeChild(profile_popup.lastElementChild);
-    })
-
-}
 
 
 
@@ -139,8 +148,8 @@ login_form.addEventListener("submit", async (e) => {
   const inputs = document.querySelectorAll("#login-form input");
 
   if(inputs[0].value=="admin@supermart.com" && inputs[1].value=="admin"){
-    const path = window.location.origin;
-    window.location.href = `${path}/Admin-Page/dashboard.html`;
+    // const path = window.location.origin;
+    window.location.href = `Admin-Page/dashboard.html`;
   }
 
   try {
@@ -156,10 +165,11 @@ login_form.addEventListener("submit", async (e) => {
     });
     const data = await res.json();
     localStorage.setItem("token", data.token);
+    localStorage.setItem("userloggedin?", true);
     console.log(data);
     if (res.ok) {
       swal({
-        title: "Login Successfull",
+        title: "Login Successful",
         text: "Welcome",
         icon: "success",
         button: "OK",
