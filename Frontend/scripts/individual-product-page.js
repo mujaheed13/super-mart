@@ -14,26 +14,20 @@ function displayProducts(...data){
 
     const div2 = document.createElement("div");
 
-    div2.addEventListener("click", ()=>{
-        localStorage.setItem("abc", JSON.stringify(el));
-        window.location.href = "individual-product-page.html"
-    });
-
+    
     const image = document.createElement("img");
     image.setAttribute("src", el.image);
+    div2.append(image);
+
+    const addToCartBtn = document.createElement("button");
+        addToCartBtn.innerText = "Add to Cart";
 
     const name = document.createElement("h2");
     name.innerText = el.name;
 
     const details = document.createElement("p");
     details.innerText = el.description;
-
-    const div3 = document.createElement("div");
-
-    div3.addEventListener("click", ()=>{
-        localStorage.setItem("abc", JSON.stringify(el));
-        window.location.href = "individual-product-page.html"
-    });
+   
 
     const price = document.createElement("h3");
     price.innerText = "₹"+el.price;
@@ -43,19 +37,9 @@ function displayProducts(...data){
     ${el.rating}`;
 
 
-    const div4 = document.createElement("div");
-
-    const bagbtn = document.createElement("button");
-    bagbtn.innerText = "ADD TO BAG";
-    bagbtn.addEventListener("click", ()=>{
-       
-    });
-
-    div2.append(image)
-    div3.append(name,span, details);
-    div4.append(price, bagbtn);
-    div1.append(div2, div3, div4);
-    main.append(div1);
+    div1.append(image, addToCartBtn);
+    div2.append(name, span, price, details);
+    main.append(div1, div2);
 
     });
 }

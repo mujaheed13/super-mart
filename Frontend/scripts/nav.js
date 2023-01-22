@@ -14,6 +14,28 @@ const login_form = document.getElementById("login-form");
 const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
 const div = document.querySelector("#products");
+const cartBtn = document.getElementById("cart-btn");
+const auth_token = localStorage.getItem("token");
+
+
+
+function logout(){
+    const logoutBtn = document.createElement("a");
+    logoutBtn.innerHTML = `<img src="./images/power-on.png" alt=""> Log Out`;
+    profile_popup.append(logoutBtn)
+    logoutBtn.addEventListener("click", ()=>{
+      localStorage.removeItem("token")
+      swal("You are now Logged out")
+      profile_popup.removeChild(profile_popup.lastElementChild);
+    })
+
+}
+
+
+
+cartBtn.addEventListener("click", ()=>{
+  window.location.href = "cart.html";
+})
 
 logo.addEventListener("click", () => {
   window.location.href = "index.html";
@@ -82,7 +104,7 @@ register_form.addEventListener("submit", async (e) => {
     password: userDetails[3],
   };
 
-  console.table(userObj);
+  
 
   try {
     let res = await fetch(`${api_base_url}/user/register`, {
@@ -142,6 +164,7 @@ login_form.addEventListener("submit", async (e) => {
         icon: "success",
         button: "OK",
       });
+      logout();
     } else {
       console.log(res);
       if (res.status == 404) {
@@ -178,51 +201,3 @@ searchBtn.addEventListener("click", async(e)=>{
 
 })
 
-console.log(searchInput)
-
-
-function displayProducts(data){
-
-  div.innerHTML = null;
-
-  data.forEach((el)=>{
-      
-  const div1 = document.createElement("div");
-
-  const div2 = document.createElement("div");
-
-  const image = document.createElement("img");
-  image.setAttribute("src", el.image);
-
-  const name = document.createElement("h2");
-  name.innerText = el.name;
-
-  const details = document.createElement("p");
-  details.innerText = el.description;
-
-  const div3 = document.createElement("div");
-
-  const price = document.createElement("h3");
-  price.innerText = "₹"+el.price;
-
-  const span = document.createElement("span");
-  span.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="15" viewBox="0 0 24 24" width="15"><path d="M0 0h24v24H0z" fill="none"/><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-  ${el.rating}`;
-
-
-  const div4 = document.createElement("div");
-
-  const bagbtn = document.createElement("button");
-  bagbtn.innerText = "ADD TO BAG";
-  bagbtn.addEventListener("click", ()=>{
-     
-  });
-
-  div2.append(image)
-  div3.append(name,span, details);
-  div4.append(price, bagbtn);
-  div1.append(div2, div3, div4);
-  div.append(div1);
-
-  });
-}

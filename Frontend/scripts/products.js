@@ -3,6 +3,7 @@ const div = document.querySelector("#products");
 const filterByCategory = document.getElementById("filter-by-category");
 const sortByPrice = document.getElementById("sort-by-price");
 const sortByRatings = document.getElementById("sort-by-ratings");
+const token = localStorage.getItem("token");
 // import { navbar } from "./navbar.js";
 // const nav = document.querySelector("nav");
 // nav.innerHTML = navbar;
@@ -63,20 +64,56 @@ function displayProducts(data){
 
     const div4 = document.createElement("div");
 
-    const bagbtn = document.createElement("button");
-    bagbtn.innerText = "ADD TO BAG";
-    bagbtn.addEventListener("click", ()=>{
-       
+    const cartBtn = document.createElement("button");
+    cartBtn.innerText = "Add to Cart";
+    cartBtn.addEventListener("click", ()=>{
+       if(token){
+        addToCartfun(el);
+       } else {
+        swal("Please Login in first");
+       }
     });
 
     div2.append(image)
     div3.append(name,span, details);
-    div4.append(price, bagbtn);
+    div4.append(price, cartBtn);
     div1.append(div2, div3, div4);
     div.append(div1);
 
     });
 }
+
+// Add to Cart
+
+async function addToCartfun(prod){
+
+        try {
+            let res = await fetch(`${api_base_url}/cartproducts`, {
+              method: "POST",
+              body: JSON.stringify(prod),
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: token
+              },
+            });
+            if (res.ok) {
+              swal({
+                title: "Product has been Added.",
+                text: "You can login now.",
+                icon: "success",
+                button: "OK",
+              });
+            } else {
+              console.log(res);
+              swal(res.json());
+            }
+          } catch (error) {
+              console.log(error);
+              swal("Some error occurred");
+          }
+
+}
+
 
 filterByCategory.addEventListener("change", async()=>{
     if(sortByPrice.value=="" && filterByCategory.value==""){

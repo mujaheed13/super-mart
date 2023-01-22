@@ -3,6 +3,7 @@ const navBar = `
 <a href="./dashboard.html">Dashboard</a>
 <a href="./admin-products.html">Products</a>
 <a href="./users.html">Users</a>
+<a href="../Frontend/index.html">Log out</a>
 </div>
 `;
 
