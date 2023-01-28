@@ -34,6 +34,27 @@ GET /cartproducts - to get cart products
 DELETE /cartproducts/:id - to delete a product from cart
 ```
 
+## Home Page
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/112754547/215284456-06a01093-61b2-4431-9acb-cf8770c62b10.png">
+
+## Login
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/112754547/215284552-f1b785aa-37f0-4c55-9049-032dd14b01da.png">
+
+## Register
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/112754547/215284599-8424a866-3304-44d0-8cf9-97f2b13dcb01.png">
+
+## Products Page
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/112754547/215284622-a2bedf6b-3a06-43c5-90bc-5ebc748a6198.png">
+
+## Individual Product Page
+
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/112754547/215284695-3f517657-6748-4faa-b2a9-a1d743ce6710.png">
+
+
 
 ## Feedback
 
