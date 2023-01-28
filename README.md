@@ -11,7 +11,7 @@ Super Mart is a flipkart clone. Basically flipkart is an e-commerce store.
 HTML | CSS | JavaScript | Bootstrap
 
 • **Backend**:
-Node.js | Express.js
+Node.js | Express.js | MongoDB
 
 → **Node Modules**:
 mongoose.js | bcrypt | cors | dotenv | 
