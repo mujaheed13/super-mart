@@ -33,6 +33,10 @@ POST /cartproducts - to add products to cart
 GET /cartproducts - to get cart products
 DELETE /cartproducts/:id - to delete a product from cart
 ```
+## Site Map
+<img width="762" alt="image" src="https://user-images.githubusercontent.com/112754547/215285667-fdda1400-4771-4576-acd4-e4b882c52283.png">
+
+
 
 ## Home Page
 
