@@ -18,7 +18,7 @@ app.use(json());
 //routes
 app.use("/user", userRouter);
 app.use("/products", productRouter);
-app.use(auth);
+app.use("/cartproducts", auth);
 app.use("/cartproducts", cartProductsRouter);
 
 app.get("/", (req, res)=>{
