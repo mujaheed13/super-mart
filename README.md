@@ -3,6 +3,8 @@
 
 Super Mart is a flipkart clone. Basically flipkart is an e-commerce store.
 
+Deployed Link :- https://supermart1.netlify.app/
+
 
 
 ## Tech Stack
