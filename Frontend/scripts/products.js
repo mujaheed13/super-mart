@@ -1,4 +1,4 @@
-const api_base_url = "https://rich-tunic-newt.cyclic.app";
+const api_base_url = "http://localhost:8080";
 const div = document.querySelector("#products");
 const filterByCategory = document.getElementById("filter-by-category");
 const sortByPrice = document.getElementById("sort-by-price");

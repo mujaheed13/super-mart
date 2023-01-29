@@ -1,6 +1,5 @@
-
 const mtCart = document.createElement("h1");
-const base_url = "https://rich-tunic-newt.cyclic.app";
+const base_url = "http://localhost:8080";
 const token = localStorage.getItem("token");
 let cartDiv = document.querySelector("#cart1");
 

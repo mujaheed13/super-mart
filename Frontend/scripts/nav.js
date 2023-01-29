@@ -1,4 +1,4 @@
-const api_base_url = "https://rich-tunic-newt.cyclic.app";
+const api_base_url = "http://localhost:8080";
 const logo = document.getElementById("logo");
 const loginBtn = document.getElementById("login-btn");
 const profile_popup = document.getElementById("profile-popup");
