@@ -24,16 +24,27 @@ jsonwebtoken | nodemon
 ## API end points
 ```
 POST /user/register - to register
+
 POST /user/login - to login
+
 GET /products - to get products data
+
 GET /products/?category=exampleCategory - to get products category wise 
+
 GET /products/?title=exampleTitle - to search products by title
+
 GET /products/?sort=asc - to get sorted products in ascending order
+
 GET /products/?sort=dsc - to get sorted products in descending order
+
 POST /products/add - to add products
+
 POST /cartproducts - to add products to cart
+
 GET /cartproducts - to get cart products
+
 DELETE /cartproducts/:id - to delete a product from cart
+
 ```
 ## Site Map
 <img width="762" alt="image" src="https://user-images.githubusercontent.com/112754547/215285667-fdda1400-4771-4576-acd4-e4b882c52283.png">
