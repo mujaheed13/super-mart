@@ -15,8 +15,9 @@ cartProductsRouter.get("/", async(req, res)=>{
 })
 
 cartProductsRouter.post('/', async(req, res)=>{
+    const { name, price, category, image, description, rating, user_id } = req.body;
     try {
-        const cartproduct = new CartProductModel({...req.body, quantity:1});
+        const cartproduct = new CartProductModel({name, price, category, image, description, rating, user_id, quantity:1});
         await cartproduct.save();
         res.send("Product has been added to the Cart");
     } catch (error) {

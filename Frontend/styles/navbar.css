@@ -177,3 +177,67 @@ nav>div {
     background-color: rgb(77, 210, 210);
     color: black;
 }
+
+#ham{
+    display: none;
+    width: 25px;
+    margin: auto;
+}
+
+
+
+/* tablet screens */
+@media screen and (max-width: 768px) {
+    
+
+
+}
+
+@media screen and (max-width: 480px) {
+
+   
+    nav {
+        padding: 10px;
+        display: grid;
+        grid-template-areas: "a b b c d e"
+                            "f f f f f f";
+    }
+
+    #logo{
+        grid-area: b;
+        width: 40%;
+    }
+
+    nav>p{
+        display: none;
+    }
+
+    #ham{        
+        display: block;
+        grid-area: a;
+    }
+
+    #cart-btn{
+        grid-area: c;
+        font-size: 0px;
+    }
+
+    #cart-btn>img{
+        width: 25px;
+        position: relative;
+        right: 50px;
+    }
+
+    #login-btn{
+        grid-area: e;
+    }
+
+
+    #search-div {
+        grid-area: f;
+        width: 95%;
+        margin: auto;
+        margin-top: 10px;
+    }
+
+}

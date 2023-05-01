@@ -13,15 +13,17 @@ const { cartProductsRouter } = require("./routes/cart-products.route.js");
 //Middlewares
 app.use(cors({origin:"*"}));
 app.use(json());
+app.use("/cartproducts", auth);
 
 
 //routes
 app.use("/user", userRouter);
 app.use("/products", productRouter);
-app.use("/cartproducts", auth);
 app.use("/cartproducts", cartProductsRouter);
 
 app.get("/", (req, res)=>{
+    console.log(req);
+    console.log(req.body);
     res.json("Super Mart");
 })
 
